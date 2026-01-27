@@ -17,13 +17,21 @@
   <body>
     <div id="app"></div>
     <script>
-      window.$docsify = {
-        name: "QAEssentials",
-        basePath: "QAdocs/",
-        homepage: "README.md",
-        loadSidebar: "_sidebar.md",
-        subMaxLevel: 2
-      };
+      (function () {
+        const pathParts = window.location.pathname.split("/").filter(Boolean);
+        const repoBase =
+          pathParts.length > 0 && !pathParts[0].endsWith(".html")
+            ? `/${pathParts[0]}/`
+            : "/";
+
+        window.$docsify = {
+          name: "QAEssentials",
+          basePath: `${repoBase}QAdocs/`,
+          homepage: "README.md",
+          loadSidebar: true,
+          subMaxLevel: 2
+        };
+      })();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
     <script>
