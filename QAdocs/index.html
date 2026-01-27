@@ -21,8 +21,11 @@
         name: "QAEssentials",
         basePath: "./",
         homepage: "README.md",
-        loadSidebar: true,
-        subMaxLevel: 2
+        loadSidebar: "_sidebar.md",
+        subMaxLevel: 2,
+        alias: {
+          "/.*/_sidebar.md": "/QAEssentials/QAdocs/_sidebar.md"
+        }
       };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
