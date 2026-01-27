@@ -2,11 +2,85 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=./QAdocs/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QAEssentials</title>
+    <meta
+      name="description"
+      content="QAEssentials QA documentation site"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <p>Redirecting to QAEssentials docs...</p>
+    <div id="app"></div>
+    <script>
+      window.$docsify = {
+        name: "QAEssentials",
+        basePath: "QAdocs/",
+        homepage: "README.md",
+        loadSidebar: "_sidebar.md",
+        subMaxLevel: 2
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script>
+      (function () {
+        const storageKey = "qaessentials-theme";
+        const root = document.documentElement;
+
+        function applyTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try {
+            localStorage.setItem(storageKey, theme);
+          } catch (error) {
+            // Ignore storage errors
+          }
+        }
+
+        function getInitialTheme() {
+          try {
+            const stored = localStorage.getItem(storageKey);
+            if (stored === "light" || stored === "dark") return stored;
+          } catch (error) {
+            // Ignore storage errors
+          }
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+
+        function addToggle() {
+          const nav = document.querySelector(".app-nav");
+          if (!nav) return false;
+          if (nav.querySelector(".theme-toggle")) return true;
+
+          const button = document.createElement("button");
+          button.className = "theme-toggle";
+          button.type = "button";
+          button.setAttribute("aria-label", "Toggle theme");
+          button.textContent = "Toggle theme";
+          button.addEventListener("click", () => {
+            const next =
+              root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            applyTheme(next);
+          });
+
+          nav.appendChild(button);
+          return true;
+        }
+
+        applyTheme(getInitialTheme());
+
+        const observer = new MutationObserver(() => {
+          if (addToggle()) observer.disconnect();
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+        addToggle();
+      })();
+    </script>
   </body>
 </html>
