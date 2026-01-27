@@ -1,0 +1,145 @@
+:root {
+  --bg: #f6f7fb;
+  --panel: #ffffff;
+  --text: #1e232b;
+  --muted: #5b6472;
+  --accent: #3a63f1;
+  --border: #e3e7ef;
+  --code-bg: #f0f2f6;
+  --shadow: 0 6px 20px rgba(16, 24, 40, 0.08);
+  --nav-bg: rgba(255, 255, 255, 0.9);
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f1218;
+  --panel: #141922;
+  --text: #e6e9ef;
+  --muted: #a7b0c0;
+  --accent: #7aa2ff;
+  --border: #232b3a;
+  --code-bg: #1a2130;
+  --shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  --nav-bg: rgba(20, 25, 34, 0.92);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.app-nav {
+  position: sticky;
+  top: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 24px;
+  z-index: 10;
+}
+
+.app-nav a {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.theme-toggle {
+  margin-left: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.sidebar {
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.sidebar ul li a {
+  color: var(--text);
+}
+
+.sidebar ul li.active > a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.content {
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px;
+}
+
+.markdown-section {
+  color: var(--text);
+}
+
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3,
+.markdown-section h4 {
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.markdown-section p,
+.markdown-section li {
+  color: var(--muted);
+}
+
+.markdown-section strong {
+  color: var(--text);
+}
+
+.markdown-section code {
+  background: var(--code-bg);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+.markdown-section pre code {
+  display: block;
+  padding: 16px;
+  background: var(--code-bg);
+  border-radius: 10px;
+}
+
+.markdown-section table {
+  border-collapse: collapse;
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+
+.markdown-section table th,
+.markdown-section table td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+}
+
+.markdown-section table th {
+  background: var(--code-bg);
+  color: var(--text);
+  text-align: left;
+}
+
+.markdown-section a {
+  color: var(--accent);
+}
+
+@media (max-width: 960px) {
+  .content {
+    margin: 16px;
+    padding: 18px;
+  }
+}
