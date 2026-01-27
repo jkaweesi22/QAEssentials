@@ -20,16 +20,23 @@
       <div class="site-tagline">Practical QA documentation</div>
     </header>
     <div id="app"></div>
-    <footer class="site-footer">
-      QAEssentials · Built for practical QA learning
-    </footer>
     <script>
       window.$docsify = {
         name: "QAEssentials",
         basePath: "./",
         homepage: "README.md",
         loadSidebar: true,
-        subMaxLevel: 2
+        subMaxLevel: 2,
+        plugins: [
+          function (hook) {
+            hook.afterEach(function (html) {
+              return (
+                html +
+                "\n\n<footer class=\"site-footer\">&copy; 2026 Jackie Namanda. <a href=\"https://www.linkedin.com/in/jackie-namanda-75912a81/\" target=\"_blank\" rel=\"noopener\">LinkedIn</a></footer>"
+              );
+            });
+          }
+        ]
       };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>

@@ -232,8 +232,8 @@ body,
 }
 
 .site-footer {
-  margin: 24px;
-  padding: 16px 20px;
+  margin: 24px 0 0;
+  padding: 14px 18px;
   border: 1px solid var(--border);
   border-radius: 12px;
   background: var(--panel);
@@ -241,6 +241,8 @@ body,
   text-align: center;
   box-shadow: var(--shadow);
   animation: fadeUp 420ms ease both;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @keyframes fadeUp {
@@ -284,6 +286,6 @@ body,
   }
 
   .site-footer {
-    margin: 16px;
+    margin: 16px 0 0;
   }
 }
