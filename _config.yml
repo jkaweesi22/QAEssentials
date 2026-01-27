@@ -1,0 +1,7 @@
+title: "QAEssentials"
+description: "Structured QA documentation with fundamentals, execution practices, and growth paths."
+markdown: kramdown
+permalink: pretty
+theme: minima
+exclude:
+  - README.md
