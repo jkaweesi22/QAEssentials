@@ -47,9 +47,7 @@
           } catch (error) {
             // Ignore storage errors
           }
-          return window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
+          return "light";
         }
 
         function addToggle() {
@@ -61,18 +59,20 @@
           button.className = "theme-toggle";
           button.type = "button";
           button.setAttribute("aria-label", "Toggle theme");
-          button.textContent = "Toggle theme";
+          button.textContent = "Dark mode";
           button.addEventListener("click", () => {
             const next =
               root.getAttribute("data-theme") === "dark" ? "light" : "dark";
             applyTheme(next);
+            button.textContent = next === "dark" ? "Light mode" : "Dark mode";
           });
 
           nav.appendChild(button);
           return true;
         }
 
-        applyTheme(getInitialTheme());
+        const initialTheme = getInitialTheme();
+        applyTheme(initialTheme);
 
         const observer = new MutationObserver(() => {
           if (addToggle()) observer.disconnect();
