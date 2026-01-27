@@ -15,7 +15,14 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <header class="site-header">
+      <div class="site-title">QAEssentials</div>
+      <div class="site-tagline">Practical QA documentation</div>
+    </header>
     <div id="app"></div>
+    <footer class="site-footer">
+      QAEssentials · Built for practical QA learning
+    </footer>
     <script>
       window.$docsify = {
         name: "QAEssentials",
@@ -51,9 +58,7 @@
         }
 
         function addToggle() {
-          const nav = document.querySelector(".app-nav");
-          if (!nav) return false;
-          if (nav.querySelector(".theme-toggle")) return true;
+          if (document.querySelector(".theme-toggle")) return true;
 
           const button = document.createElement("button");
           button.className = "theme-toggle";
@@ -67,18 +72,13 @@
             button.textContent = next === "dark" ? "Light mode" : "Dark mode";
           });
 
-          nav.appendChild(button);
+          document.body.appendChild(button);
           return true;
         }
 
         const initialTheme = getInitialTheme();
         applyTheme(initialTheme);
 
-        const observer = new MutationObserver(() => {
-          if (addToggle()) observer.disconnect();
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
         addToggle();
       })();
     </script>
