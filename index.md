@@ -15,6 +15,37 @@ description: "Structured QA documentation with fundamentals, execution practices
   </div>
 </section>
 
+<section id="quality-first-culture">
+  <h2>Quality First Culture</h2>
+  <div class="grid cards">
+    <article class="card">
+      <h3>Quality First Newsletter</h3>
+      <p class="meta">Periodic bulletins to build a shared, practical culture of quality.</p>
+      <ul class="list-compact">
+        <li>Short editions you can share with Dev + Product</li>
+        <li>Collaboration standards and quality habits</li>
+        <li>Real-world examples and action checklists</li>
+      </ul>
+      <a href="{{ site.github.baseurl | default: site.baseurl }}/qualityfirst/">Open the newsletter hub →</a>
+    </article>
+    <article class="card">
+      <h3>Why this matters</h3>
+      <p class="meta">Quality is not a phase — it’s a system.</p>
+      <div class="callout">
+        The goal is to shift quality left (and right) through shared ownership, clear expectations, and repeatable habits.
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="qa-essentials">
+  <h2>QA Essentials</h2>
+  <div class="card">
+    <p class="meta">The full knowledge base is organized by foundations, execution, strategy, and growth.</p>
+    <p><a href="docs/#/README">Open the full knowledge base →</a></p>
+  </div>
+</section>
+
 <section id="core-foundations">
   <h2>Core Foundations</h2>
   <div class="grid cards">

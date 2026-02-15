@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quality First Culture — Internal Newsletters</title>
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #101826;
+      --text: #e7edf6;
+      --muted: #a7b3c6;
+      --brand: #f5c84c;
+      --brand2: #31c48d;
+      --border: rgba(245,200,76,.22);
+      --radius: 18px;
+      --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --body-bg: radial-gradient(900px 500px at 20% -10%, rgba(245,200,76,.18), transparent 65%), radial-gradient(900px 500px at 90% 10%, rgba(49,196,141,.14), transparent 60%), linear-gradient(180deg, #070a0f, var(--bg));
+      --card-bg: rgba(16,24,38,.55);
+      --card-border: rgba(231,237,246,.1);
+      --card-shadow: 0 14px 42px rgba(0,0,0,.28);
+      --text-soft: rgba(231,237,246,.9);
+      --pill-bg: rgba(7,10,15,.55);
+      --pill-border: rgba(231,237,246,.12);
+      --pill-text: rgba(231,237,246,.88);
+    }
+    html[data-theme="light"] {
+      --bg: #f5f6f8;
+      --text: #0f1419;
+      --muted: #4b5563;
+      --brand: #b45309;
+      --border: rgba(15,20,25,.14);
+      --body-bg: #f0f2f5;
+      --card-bg: #ffffff;
+      --card-border: rgba(15,20,25,.12);
+      --card-shadow: 0 2px 8px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --text-soft: #1a1f2e;
+      --pill-bg: #ffffff;
+      --pill-border: rgba(15,20,25,.14);
+      --pill-text: #1a1f2e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--body-bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+      padding: 2rem 1rem 3rem;
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .page-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .page-header h1 {
+      margin: 0;
+    }
+    .theme-toggle {
+      display: flex;
+      gap: 2px;
+      border-radius: 999px;
+      padding: 4px;
+      background: var(--pill-bg);
+      border: 1px solid var(--pill-border);
+      flex-shrink: 0;
+    }
+    .theme-btn {
+      font: inherit;
+      font-size: 12px;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--pill-text);
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .theme-btn:hover {
+      background: rgba(245,200,76,.15);
+      color: var(--text);
+    }
+    .theme-btn[aria-pressed="true"] {
+      background: var(--brand);
+      color: #fff;
+    }
+    html[data-theme="light"] .theme-btn[aria-pressed="true"] {
+      background: #b45309;
+      color: #fff;
+    }
+    h1 {
+      font-size: clamp(26px, 4vw, 36px);
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: var(--muted);
+      margin: 0 0 2rem;
+      font-size: 15px;
+    }
+    .intro {
+      color: var(--text-soft);
+      margin: 0 0 1.25rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    ul li { margin: 0.5rem 0; }
+    ul a {
+      display: block;
+      padding: 14px 18px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      background: var(--card-bg);
+      color: var(--text);
+      text-decoration: none;
+      transition: border-color .15s, background .15s;
+      box-shadow: var(--card-shadow);
+    }
+    ul a:hover {
+      border-color: rgba(245,200,76,.35);
+      background: rgba(245,200,76,.07);
+      color: var(--brand);
+    }
+    html[data-theme="light"] ul a {
+      color: var(--text-soft);
+    }
+    html[data-theme="light"] ul a:hover {
+      border-color: rgba(180,83,9,.35);
+      background: rgba(180,83,9,.08);
+      color: #8b3a06;
+    }
+    ul a::before {
+      content: "🐝 ";
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p style="margin:0 0 12px;"><a href="../" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(231,237,246,.22);">← Back to QA Essentials</a></p>
+    <header class="page-header">
+      <h1>Quality First Culture</h1>
+      <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" class="theme-btn" data-theme="light" aria-pressed="false" title="Light theme">☀️ Light</button>
+        <button type="button" class="theme-btn" data-theme="dark" aria-pressed="true" title="Dark theme">🌙 Dark</button>
+      </div>
+    </header>
+    <p class="subtitle">Internal newsletters</p>
+    <p class="intro">Welcome. New editions will be linked here.</p>
+    <ul id="newsletter-list">
+      <li><a href="issue-01.html">Quality Bulletin #01 — Build Quality In From Day One</a></li>
+    </ul>
+  </div>
+  <script>
+    (function(){
+      var KEY = 'qafirstculture-theme';
+      var root = document.documentElement;
+      function getStored(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+      function setStored(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+      function apply(theme){
+        theme = theme === 'light' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        document.querySelectorAll('.theme-btn').forEach(function(btn){
+          btn.setAttribute('aria-pressed', btn.getAttribute('data-theme') === theme ? 'true' : 'false');
+        });
+        setStored(theme);
+      }
+      var initial = getStored() || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      apply(initial);
+      document.addEventListener('click', function(e){
+        var btn = e.target.closest('.theme-btn');
+        if (btn) apply(btn.getAttribute('data-theme'));
+      });
+    })();
+  </script>
+</body>
+</html>
