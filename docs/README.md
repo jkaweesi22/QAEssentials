@@ -9,7 +9,7 @@ for QA learning and execution.
 
 Looking for the internal newsletter hub?
 
-- **Quality First Culture newsletters**: [Open the newsletter hub](qualityfirst/)
+- **Quality First Culture newsletters**: [Open the newsletter hub](qualityfirst/index.html)
 
 ## Who this is for
 

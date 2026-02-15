@@ -1,5 +1,5 @@
 - [Home](README.md)
-- [Quality First Culture](qualityfirst/)
+- [Quality First Culture](qualityfirst/index.html)
 - [Fundamentals](fundamentals.md)
 - [Testing Types](testing-types.md)
 - [Test Artifacts](test-artifacts.md)
