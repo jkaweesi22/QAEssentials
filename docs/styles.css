@@ -202,10 +202,38 @@ body,
   color: var(--text);
   box-shadow: var(--shadow);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   animation: fadeUp 320ms ease both;
+}
+
+.site-brand {
+  display: grid;
+  gap: 2px;
+}
+
+.site-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.site-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.site-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .site-title {
