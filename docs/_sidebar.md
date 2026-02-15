@@ -1,5 +1,5 @@
 - [Home](README.md)
-- [Quality First Culture](qualityfirst/index.html)
+- <a href="./qualityfirst/index.html" target="_blank" rel="noopener">Quality First Culture</a>
 - [Fundamentals](fundamentals.md)
 - [Testing Types](testing-types.md)
 - [Test Artifacts](test-artifacts.md)

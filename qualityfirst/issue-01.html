@@ -40,8 +40,8 @@
       --callout-bg: linear-gradient(180deg, rgba(245,200,76,.11), rgba(16,24,38,.45));
       --text-soft: rgba(231,237,246,.92);
       --text-deemph: rgba(167,179,198,.95);
-      --bee-mark-bg: radial-gradient(circle at 30% 30%, rgba(255,255,255,.2), transparent 40%), linear-gradient(135deg, rgba(245,200,76,.95), rgba(245,200,76,.55));
-      --bee-mark-text: #111;
+      --quality-mark-bg: radial-gradient(circle at 30% 30%, rgba(255,255,255,.2), transparent 40%), linear-gradient(135deg, rgba(245,200,76,.95), rgba(245,200,76,.55));
+      --quality-mark-text: #111;
     }
 
     html[data-theme="light"]{
@@ -72,8 +72,8 @@
       --callout-bg: linear-gradient(180deg, rgba(180,83,9,.12), #fef9f3);
       --text-soft: #1a1f2e;
       --text-deemph: #4b5563;
-      --bee-mark-bg: radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), transparent 40%), linear-gradient(135deg, #d4a017, #b45309);
-      --bee-mark-text: #1a1f2e;
+      --quality-mark-bg: radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), transparent 40%), linear-gradient(135deg, #d4a017, #b45309);
+      --quality-mark-text: #1a1f2e;
     }
 
     *{ box-sizing:border-box; }
@@ -123,12 +123,12 @@
     }
     .badge .badge-subtitle{ color: var(--muted); font-weight: 600; }
 
-    .beeMark{
+    .qualityMark{
       width: 34px; height: 34px;
       border-radius: 12px;
-      background: var(--bee-mark-bg);
+      background: var(--quality-mark-bg);
       display:grid; place-items:center;
-      color: var(--bee-mark-text);
+      color: var(--quality-mark-text);
       font-size: 18px;
       box-shadow: 0 10px 25px rgba(245,200,76,.18);
     }
@@ -139,10 +139,10 @@
       vertical-align: -0.2em;
       color: var(--brand2);
     }
-    .beeMark .q-icon{
+    .qualityMark .q-icon{
       width: 18px;
       height: 18px;
-      color: var(--bee-mark-text);
+      color: var(--quality-mark-text);
     }
 
     .heroTitle{
@@ -373,7 +373,7 @@
     <header class="hero">
       <div class="heroTop">
         <div class="badge">
-          <div class="beeMark">
+          <div class="qualityMark">
             <svg class="q-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M12 2l7 4v6c0 5-3.5 9.4-7 10-3.5-.6-7-5-7-10V6l7-4z"/>
               <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 12.5l2.2 2.2L16.5 8.5"/>
