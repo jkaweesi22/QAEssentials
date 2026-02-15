@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quality Bulletin</title>
+  <meta name="description" content="Quality First Newsletter — QA as Wisdom & Foresight" />
+
+  <style>
+    :root{
+      /* Dark theme (default) */
+      --bg: #0b0f14;
+      --panel: #101826;
+      --text: #e7edf6;
+      --muted: #a7b3c6;
+      --brand: #f5c84c;
+      --brand2: #31c48d;
+      --border: rgba(245,200,76,.22);
+      --shadow: 0 18px 55px rgba(0,0,0,.35);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --body-bg: radial-gradient(900px 500px at 20% -10%, rgba(245,200,76,.18), transparent 65%), radial-gradient(900px 500px at 90% 10%, rgba(49,196,141,.14), transparent 60%), linear-gradient(180deg, #070a0f, var(--bg));
+      --hero-bg: linear-gradient(180deg, rgba(16,24,38,.95), rgba(11,15,20,.78));
+      --card-bg: rgba(16,24,38,.55);
+      --card-shadow: 0 14px 42px rgba(0,0,0,.28);
+      --card-border: rgba(231,237,246,.10);
+      --pill-bg: rgba(7,10,15,.55);
+      --pill-border: rgba(231,237,246,.12);
+      --pill-text: rgba(231,237,246,.88);
+      --quote-bg: rgba(245,200,76,.08);
+      --quote-text: rgba(231,237,246,.92);
+      --toc-bg: rgba(7,10,15,.35);
+      --toc-border: rgba(231,237,246,.10);
+      --toc-hover-bg: rgba(245,200,76,.07);
+      --footer-bg: rgba(7,10,15,.35);
+      --stamp-bg: rgba(16,24,38,.35);
+      --stamp-border: rgba(231,237,246,.18);
+      --stamp-text: rgba(231,237,246,.7);
+      --callout-bg: linear-gradient(180deg, rgba(245,200,76,.11), rgba(16,24,38,.45));
+      --text-soft: rgba(231,237,246,.92);
+      --text-deemph: rgba(167,179,198,.95);
+      --bee-mark-bg: radial-gradient(circle at 30% 30%, rgba(255,255,255,.2), transparent 40%), linear-gradient(135deg, rgba(245,200,76,.95), rgba(245,200,76,.55));
+      --bee-mark-text: #111;
+    }
+
+    html[data-theme="light"]{
+      --bg: #f5f6f8;
+      --panel: #ffffff;
+      --text: #0f1419;
+      --muted: #4b5563;
+      --brand: #b45309;
+      --border: rgba(15,20,25,.14);
+      --shadow: 0 4px 20px rgba(0,0,0,.08), 0 1px 3px rgba(0,0,0,.05);
+      --body-bg: #f0f2f5;
+      --hero-bg: linear-gradient(180deg, #ffffff, #fafbfc);
+      --card-bg: #ffffff;
+      --card-shadow: 0 2px 8px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --card-border: rgba(15,20,25,.1);
+      --pill-bg: #ffffff;
+      --pill-border: rgba(15,20,25,.14);
+      --pill-text: #1a1f2e;
+      --quote-bg: rgba(180,83,9,.1);
+      --quote-text: #1a1f2e;
+      --toc-bg: #f8f9fa;
+      --toc-border: rgba(15,20,25,.1);
+      --toc-hover-bg: rgba(180,83,9,.1);
+      --footer-bg: #f0f2f5;
+      --stamp-bg: #e8eaed;
+      --stamp-border: rgba(15,20,25,.18);
+      --stamp-text: #4b5563;
+      --callout-bg: linear-gradient(180deg, rgba(180,83,9,.12), #fef9f3);
+      --text-soft: #1a1f2e;
+      --text-deemph: #4b5563;
+      --bee-mark-bg: radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), transparent 40%), linear-gradient(135deg, #d4a017, #b45309);
+      --bee-mark-text: #1a1f2e;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      background: var(--body-bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a{ color: var(--brand); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 18px 60px;
+    }
+
+    /* Header */
+    .hero{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--hero-bg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .heroTop{
+      padding: 22px 22px 14px;
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 700;
+      letter-spacing:.06em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+    .badge .badge-subtitle{ color: var(--muted); font-weight: 600; }
+
+    .beeMark{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background: var(--bee-mark-bg);
+      display:grid; place-items:center;
+      color: var(--bee-mark-text);
+      font-size: 18px;
+      box-shadow: 0 10px 25px rgba(245,200,76,.18);
+    }
+
+    .heroTitle{
+      padding: 0 22px 22px;
+    }
+
+    h1{
+      margin: 10px 0 8px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .subtitle{
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0;
+      max-width: 62ch;
+    }
+
+    .heroMeta{
+      display:flex;
+      gap:12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items:center;
+      padding-top: 2px;
+    }
+    .pill{
+      border: 1px solid var(--pill-border);
+      background: var(--pill-bg);
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--pill-text);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .pill strong{ color: var(--brand); font-weight: 800; }
+
+    .heroBar{
+      height: 8px;
+      background:
+        linear-gradient(90deg, rgba(245,200,76,1), rgba(245,200,76,.6), rgba(49,196,141,.65), rgba(49,196,141,1));
+    }
+
+    /* Layout */
+    .grid{
+      display:grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    @media (max-width: 880px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 18px;
+    }
+    .card h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -.01em;
+    }
+    .card h3{
+      margin: 14px 0 8px;
+      font-size: 15px;
+      color: var(--text-soft);
+    }
+
+    .lede{
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .quote{
+      margin: 14px 0 0;
+      padding: 14px 14px 14px 16px;
+      border-left: 3px solid var(--brand);
+      background: var(--quote-bg);
+      border-radius: 12px;
+      color: var(--quote-text);
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .dot{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: var(--brand2);
+      box-shadow: 0 0 0 4px rgba(49,196,141,.12);
+    }
+
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--text-soft);
+    }
+    li{ margin: 6px 0; }
+    li::marker{ color: var(--brand); }
+
+    .callout{
+      margin-top: 14px;
+      padding: 14px 14px 14px 16px;
+      border: 1px solid var(--border);
+      background: var(--callout-bg);
+      border-radius: 14px;
+    }
+    .calloutTitle{
+      margin: 0 0 6px;
+      font-weight: 800;
+      color: var(--brand);
+      letter-spacing: .02em;
+    }
+    .callout-accent{ border-color: rgba(49,196,141,.25); background: linear-gradient(180deg, rgba(49,196,141,.12), rgba(16,24,38,.45)); }
+    html[data-theme="light"] .callout-accent{ border-color: rgba(34,139,34,.3); background: linear-gradient(180deg, rgba(49,196,141,.14), #f0fdf6); }
+    .callout-accent .calloutTitle{ color: #31c48d; }
+    html[data-theme="light"] .callout-accent .calloutTitle{ color: #0d9668; }
+    .small{
+      color: var(--text-deemph);
+      font-size: 13px;
+      margin: 0;
+    }
+
+    .toc a{
+      display:flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--toc-border);
+      background: var(--toc-bg);
+      margin: 8px 0;
+    }
+    .toc a:hover{
+      border-color: rgba(245,200,76,.35);
+      background: var(--toc-hover-bg);
+      text-decoration:none;
+    }
+    .toc span{
+      color: var(--text-soft);
+      font-weight: 650;
+    }
+    .toc em{
+      color: var(--muted);
+      font-style: normal;
+      font-size: 12px;
+    }
+
+    .footer{
+      margin-top: 18px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: var(--footer-bg);
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      justify-content: space-between;
+      color: var(--text-deemph);
+      font-size: 13px;
+    }
+    .footer strong{ color: var(--text-soft); }
+    .stamp{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--stamp-text);
+      border: 1px dashed var(--stamp-border);
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: var(--stamp-bg);
+    }
+
+    .back-link{
+      display: inline-block;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .theme-toggle{
+      display: flex;
+      gap: 2px;
+      border-radius: 999px;
+      padding: 4px;
+      background: var(--pill-bg);
+      border: 1px solid var(--pill-border);
+    }
+    .theme-btn{
+      font: inherit;
+      font-size: 12px;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--pill-text);
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .theme-btn:hover{
+      background: rgba(245,200,76,.15);
+      color: var(--text);
+    }
+    .theme-btn[aria-pressed="true"]{
+      background: var(--brand);
+      color: #111;
+    }
+    html[data-theme="light"] .theme-btn[aria-pressed="true"]{
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <a href="index.html" class="back-link">← All newsletters</a>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="heroTop">
+        <div class="badge">
+          <div class="beeMark">🐝</div>
+          <div>
+            QUALITY BULLETIN<br />
+            <span class="badge-subtitle">QA as Wisdom &amp; Foresight</span>
+          </div>
+        </div>
+
+        <div class="heroMeta">
+          <div class="theme-toggle" role="group" aria-label="Theme">
+            <button type="button" class="theme-btn" data-theme="light" aria-pressed="false" title="Light theme">☀️ Light</button>
+            <button type="button" class="theme-btn" data-theme="dark" aria-pressed="true" title="Dark theme">🌙 Dark</button>
+          </div>
+          <div class="pill"><strong>Date</strong> Feb 11, 2026</div>
+          <div class="pill"><strong>Edition</strong> #01</div>
+          <div class="pill"><strong>Audience</strong> Dev + Product</div>
+          <div class="pill"><strong>Status</strong> Internal</div>
+        </div>
+      </div>
+
+      <div class="heroTitle">
+        <h1>Build Quality In From Day One</h1>
+        <p class="subtitle">
+          When QA is involved early, we protect velocity, reduce rework, and ship with confidence.
+          This bulletin aligns our teams on how we collaborate for consistent product quality.
+        </p>
+      </div>
+
+      <div class="heroBar"></div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="grid">
+      <!-- Main column -->
+      <section class="card" id="message">
+        <div class="kicker"><span class="dot"></span> FROM THE QA DESK</div>
+        <p class="lede">
+          We don't believe in <strong>QA at the end</strong>. We believe in <strong>QA at the table</strong>.
+          Quality is not a checkpoint — it's an architectural decision.
+        </p>
+
+        <div class="quote">
+          When QA is introduced after development is complete, something critical is lost:
+          <strong>context</strong>. And when context is missing, communication becomes reactive and rework increases.
+        </div>
+
+        <h2 id="why">🐝 Why Early QA Involvement Matters</h2>
+
+        <h3 id="reqs">1) Clearer requirements before code begins</h3>
+        <ul>
+          <li>Ambiguities surfaced early</li>
+          <li>Measurable acceptance criteria</li>
+          <li>Edge cases identified proactively</li>
+          <li>Business intent aligned across the sprint</li>
+        </ul>
+
+        <h3 id="rework">2) Reduced rework &amp; engineering waste</h3>
+        <ul>
+          <li>Issues caught in requirements/design are cheaper than staging/UAT/production</li>
+          <li>Early QA protects engineering time and preserves sprint momentum</li>
+        </ul>
+
+        <h3 id="strategy">3) Strategic test planning (not reactive testing)</h3>
+        <ul>
+          <li>Automation planned in parallel</li>
+          <li>Risk areas identified early</li>
+          <li>Performance &amp; usability considered proactively</li>
+          <li>Integration points validated before implementation</li>
+        </ul>
+
+        <h3 id="devexp">4) Stronger developer experience</h3>
+        <ul>
+          <li>Fewer last-minute bug floods</li>
+          <li>Cleaner handoffs and faster validation cycles</li>
+          <li>Clear shared definition of done</li>
+        </ul>
+
+        <h3 id="trust">5) Protecting user trust</h3>
+        <ul>
+          <li>Stability, reliability, predictable workflows</li>
+          <li>Edge case resilience and clear error handling</li>
+        </ul>
+
+        <h2 id="standards">🐝 Developer Collaboration Standards</h2>
+
+        <h3 id="goals">1) Share clear sprint goals &amp; timeframes</h3>
+        <ul>
+          <li>Define intended outcomes, not just tasks</li>
+          <li>Clarify business objectives and dependencies</li>
+          <li>Share realistic timeframes</li>
+        </ul>
+
+        <h3 id="details">2) Add detailed context to every task you pick</h3>
+        <ul>
+          <li>Clear acceptance criteria</li>
+          <li>Expected behavior and edge cases</li>
+          <li>API contracts (when applicable)</li>
+          <li>UI/UX references and known limitations</li>
+        </ul>
+
+        <h3 id="dod">3) Establish a shared definition of done</h3>
+        <ul>
+          <li>Validation expectations + environments</li>
+          <li>Automation requirements</li>
+          <li>Observability (logs/monitoring) readiness</li>
+          <li>Regression considerations</li>
+        </ul>
+
+        <h3 id="scenarios">4) Think in test scenarios during development</h3>
+        <ul>
+          <li>Null/empty inputs</li>
+          <li>Slow network/retries</li>
+          <li>Permissions and boundary cases</li>
+          <li>Scale and concurrency concerns</li>
+        </ul>
+
+        <h3 id="changes">5) Communicate scope changes early</h3>
+        <ul>
+          <li>Update tickets and acceptance criteria immediately</li>
+          <li>Notify QA when behavior or expectations change</li>
+        </ul>
+
+        <h3 id="units">6) Break large tasks into testable units</h3>
+        <ul>
+          <li>Faster feedback loops</li>
+          <li>Lower regression risk</li>
+          <li>Better automation readiness</li>
+        </ul>
+
+        <h3 id="risks">7) Document known risks transparently</h3>
+        <ul>
+          <li>Workarounds, partial implementations, limitations</li>
+          <li>Helps QA test smarter and prioritize risk</li>
+        </ul>
+
+        <div class="callout" id="shift">
+          <p class="calloutTitle">🚀 Raising the Bar on Quality</p>
+          <p class="small">
+            Shift-left testing culture, quick dev-QA alignment before build, defect root-cause tracking,
+            and designing for observability (logs, flags, monitoring) raise quality while protecting velocity.
+          </p>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="card">
+        <h2>📌 In This Bulletin</h2>
+        <div class="toc">
+          <a href="#message"><span>From the QA Desk</span><em>Purpose + context</em></a>
+          <a href="#why"><span>Why Early QA</span><em>Benefits</em></a>
+          <a href="#standards"><span>Dev Collaboration Standards</span><em>How we work</em></a>
+          <a href="#shift"><span>Raising the Bar</span><em>Next-level habits</em></a>
+        </div>
+
+        <div class="callout" style="margin-top:16px;">
+          <p class="calloutTitle">🐝 Quality Standard</p>
+          <p class="small">
+            QA + Dev is not a handoff. It's co-creation. We build intentionally, release confidently,
+            and protect user trust together.
+          </p>
+        </div>
+
+        <div class="callout callout-accent" style="margin-top:16px;">
+          <p class="calloutTitle">✅ Action Checklist (Sprint Start)</p>
+          <ul style="margin-top:8px;">
+            <li>Goal + timeframe shared</li>
+            <li>Tickets have AC + context</li>
+            <li>Risks &amp; dependencies visible</li>
+            <li>DoD aligned</li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>
+        <strong>Quality Bulletin</strong> · Built for alignment, velocity, and user trust.
+        <span style="opacity:.7;">&nbsp;|&nbsp;</span>
+        <span>Questions? Ping QA in your sprint channel.</span>
+      </div>
+      <div class="stamp">Quality Stewards</div>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      var KEY = 'qafirstculture-theme';
+      var root = document.documentElement;
+      function getStored(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+      function setStored(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+      function apply(theme){
+        theme = theme === 'light' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        document.querySelectorAll('.theme-btn').forEach(function(btn){
+          btn.setAttribute('aria-pressed', btn.getAttribute('data-theme') === theme ? 'true' : 'false');
+        });
+        setStored(theme);
+      }
+      var initial = getStored() || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      apply(initial);
+      document.addEventListener('click', function(e){
+        var btn = e.target.closest('.theme-btn');
+        if (btn) apply(btn.getAttribute('data-theme'));
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -5,6 +5,12 @@ core testing principles while serving as a long-term reference for working QA
 professionals. It exists to provide a clear, accurate, and usable foundation
 for QA learning and execution.
 
+## Quality First Culture
+
+Looking for the internal newsletter hub?
+
+- **Quality First Culture newsletters**: [Open the newsletter hub](qualityfirst/)
+
 ## Who this is for
 
 - Individuals new to QA
