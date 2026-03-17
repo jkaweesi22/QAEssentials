@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quality Bulletin</title>
+  <meta name="description" content="Quality First Newsletter — Quality Engineering lens" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Cpath%20fill='%2331c48d'%20d='M32%204l20%2010v18c0%2016-10%2030-20%2032C22%2062%2012%2048%2012%2032V14L32%204z'/%3E%3Cpath%20fill='none'%20stroke='%230b0f14'%20stroke-width='6'%20stroke-linecap='round'%20stroke-linejoin='round'%20d='M20%2033l8%208%2016-20'/%3E%3C/svg%3E" />
+
+  <style>
+    :root{
+      /* Dark theme (default) */
+      --bg: #0b0f14;
+      --panel: #101826;
+      --text: #e7edf6;
+      --muted: #a7b3c6;
+      --brand: #f5c84c;
+      --brand2: #31c48d;
+      --border: rgba(245,200,76,.22);
+      --shadow: 0 18px 55px rgba(0,0,0,.35);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --body-bg: radial-gradient(900px 500px at 20% -10%, rgba(245,200,76,.18), transparent 65%), radial-gradient(900px 500px at 90% 10%, rgba(49,196,141,.14), transparent 60%), linear-gradient(180deg, #070a0f, var(--bg));
+      --hero-bg: linear-gradient(180deg, rgba(16,24,38,.95), rgba(11,15,20,.78));
+      --card-bg: rgba(16,24,38,.55);
+      --card-shadow: 0 14px 42px rgba(0,0,0,.28);
+      --card-border: rgba(231,237,246,.10);
+      --pill-bg: rgba(7,10,15,.55);
+      --pill-border: rgba(231,237,246,.12);
+      --pill-text: rgba(231,237,246,.88);
+      --quote-bg: rgba(245,200,76,.08);
+      --quote-text: rgba(231,237,246,.92);
+      --toc-bg: rgba(7,10,15,.35);
+      --toc-border: rgba(231,237,246,.10);
+      --toc-hover-bg: rgba(245,200,76,.07);
+      --footer-bg: rgba(7,10,15,.35);
+      --stamp-bg: rgba(16,24,38,.35);
+      --stamp-border: rgba(231,237,246,.18);
+      --stamp-text: rgba(231,237,246,.7);
+      --callout-bg: linear-gradient(180deg, rgba(245,200,76,.11), rgba(16,24,38,.45));
+      --text-soft: rgba(231,237,246,.92);
+      --text-deemph: rgba(167,179,198,.95);
+      --quality-mark-bg: radial-gradient(circle at 30% 30%, rgba(255,255,255,.2), transparent 40%), linear-gradient(135deg, rgba(245,200,76,.95), rgba(245,200,76,.55));
+      --quality-mark-text: #111;
+    }
+
+    html[data-theme="light"]{
+      --bg: #f5f6f8;
+      --panel: #ffffff;
+      --text: #0f1419;
+      --muted: #4b5563;
+      --brand: #b45309;
+      --border: rgba(15,20,25,.14);
+      --shadow: 0 4px 20px rgba(0,0,0,.08), 0 1px 3px rgba(0,0,0,.05);
+      --body-bg: #f0f2f5;
+      --hero-bg: linear-gradient(180deg, #ffffff, #fafbfc);
+      --card-bg: #ffffff;
+      --card-shadow: 0 2px 8px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --card-border: rgba(15,20,25,.1);
+      --pill-bg: #ffffff;
+      --pill-border: rgba(15,20,25,.14);
+      --pill-text: #1a1f2e;
+      --quote-bg: rgba(180,83,9,.1);
+      --quote-text: #1a1f2e;
+      --toc-bg: #f8f9fa;
+      --toc-border: rgba(15,20,25,.1);
+      --toc-hover-bg: rgba(180,83,9,.1);
+      --footer-bg: #f0f2f5;
+      --stamp-bg: #e8eaed;
+      --stamp-border: rgba(15,20,25,.18);
+      --stamp-text: #4b5563;
+      --callout-bg: linear-gradient(180deg, rgba(180,83,9,.12), #fef9f3);
+      --text-soft: #1a1f2e;
+      --text-deemph: #4b5563;
+      --quality-mark-bg: radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), transparent 40%), linear-gradient(135deg, #d4a017, #b45309);
+      --quality-mark-text: #1a1f2e;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      background: var(--body-bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a{ color: var(--brand); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 18px 60px;
+    }
+
+    /* Header */
+    .hero{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--hero-bg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .heroTop{
+      padding: 22px 22px 14px;
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 700;
+      letter-spacing:.06em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+    .badge .badge-subtitle{ color: var(--muted); font-weight: 600; }
+
+    .qualityMark{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background: var(--quality-mark-bg);
+      display:grid; place-items:center;
+      color: var(--quality-mark-text);
+      font-size: 18px;
+      box-shadow: 0 10px 25px rgba(245,200,76,.18);
+    }
+
+    .q-icon{
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      vertical-align: -0.2em;
+      color: var(--brand2);
+    }
+    .qualityMark .q-icon{
+      width: 18px;
+      height: 18px;
+      color: var(--quality-mark-text);
+    }
+
+    .heroTitle{
+      padding: 0 22px 22px;
+    }
+
+    h1{
+      margin: 10px 0 8px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .subtitle{
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0;
+      max-width: 62ch;
+    }
+
+    .heroMeta{
+      display:flex;
+      gap:12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items:center;
+      padding-top: 2px;
+    }
+    .pill{
+      border: 1px solid var(--pill-border);
+      background: var(--pill-bg);
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--pill-text);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .pill strong{ color: var(--brand); font-weight: 800; }
+
+    .heroBar{
+      height: 8px;
+      background:
+        linear-gradient(90deg, rgba(245,200,76,1), rgba(245,200,76,.6), rgba(49,196,141,.65), rgba(49,196,141,1));
+    }
+
+    /* Layout */
+    .grid{
+      display:grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    @media (max-width: 880px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 18px;
+    }
+    .card h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -.01em;
+    }
+    .card h3{
+      margin: 14px 0 8px;
+      font-size: 15px;
+      color: var(--text-soft);
+    }
+
+    .lede{
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .quote{
+      margin: 14px 0 0;
+      padding: 14px 14px 14px 16px;
+      border-left: 3px solid var(--brand);
+      background: var(--quote-bg);
+      border-radius: 12px;
+      color: var(--quote-text);
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .dot{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: var(--brand2);
+      box-shadow: 0 0 0 4px rgba(49,196,141,.12);
+    }
+
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--text-soft);
+    }
+    li{ margin: 6px 0; }
+    li::marker{ color: var(--brand); }
+
+    .callout{
+      margin-top: 14px;
+      padding: 14px 14px 14px 16px;
+      border: 1px solid var(--border);
+      background: var(--callout-bg);
+      border-radius: 14px;
+    }
+    .calloutTitle{
+      margin: 0 0 6px;
+      font-weight: 800;
+      color: var(--brand);
+      letter-spacing: .02em;
+    }
+    .callout-accent{ border-color: rgba(49,196,141,.25); background: linear-gradient(180deg, rgba(49,196,141,.12), rgba(16,24,38,.45)); }
+    html[data-theme="light"] .callout-accent{ border-color: rgba(34,139,34,.3); background: linear-gradient(180deg, rgba(49,196,141,.14), #f0fdf6); }
+    .callout-accent .calloutTitle{ color: #31c48d; }
+    html[data-theme="light"] .callout-accent .calloutTitle{ color: #0d9668; }
+    .small{
+      color: var(--text-deemph);
+      font-size: 13px;
+      margin: 0;
+    }
+
+    .toc a{
+      display:flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--toc-border);
+      background: var(--toc-bg);
+      margin: 8px 0;
+    }
+    .toc a:hover{
+      border-color: rgba(245,200,76,.35);
+      background: var(--toc-hover-bg);
+      text-decoration:none;
+    }
+    .toc span{
+      color: var(--text-soft);
+      font-weight: 650;
+    }
+    .toc em{
+      color: var(--muted);
+      font-style: normal;
+      font-size: 12px;
+    }
+
+    .footer{
+      margin-top: 18px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: var(--footer-bg);
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      justify-content: space-between;
+      color: var(--text-deemph);
+      font-size: 13px;
+    }
+    .footer strong{ color: var(--text-soft); }
+    .stamp{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--stamp-text);
+      border: 1px dashed var(--stamp-border);
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: var(--stamp-bg);
+    }
+
+    .back-link{
+      display: inline-block;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .theme-toggle{
+      display: flex;
+      gap: 2px;
+      border-radius: 999px;
+      padding: 4px;
+      background: var(--pill-bg);
+      border: 1px solid var(--pill-border);
+    }
+    .theme-btn{
+      font: inherit;
+      font-size: 12px;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--pill-text);
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .theme-btn:hover{
+      background: rgba(245,200,76,.15);
+      color: var(--text);
+    }
+    .theme-btn[aria-pressed="true"]{
+      background: var(--brand);
+      color: #111;
+    }
+    html[data-theme="light"] .theme-btn[aria-pressed="true"]{
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <a href="index.html" class="back-link">← All newsletters</a>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="heroTop">
+        <div class="badge">
+          <div class="qualityMark">
+            <svg class="q-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 2l7 4v6c0 5-3.5 9.4-7 10-3.5-.6-7-5-7-10V6l7-4z"/>
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 12.5l2.2 2.2L16.5 8.5"/>
+            </svg>
+          </div>
+          <div>
+            QUALITY BULLETIN<br />
+            <span class="badge-subtitle">Quality Engineering lens</span>
+          </div>
+        </div>
+
+        <div class="heroMeta">
+          <div class="theme-toggle" role="group" aria-label="Theme">
+            <button type="button" class="theme-btn" data-theme="light" aria-pressed="false" title="Light theme">☀️ Light</button>
+            <button type="button" class="theme-btn" data-theme="dark" aria-pressed="true" title="Dark theme">🌙 Dark</button>
+          </div>
+          <div class="pill"><strong>Date</strong> Mar 17, 2026</div>
+          <div class="pill"><strong>Edition</strong> #02</div>
+          <div class="pill"><strong>Audience</strong> QA + Engineering</div>
+          <div class="pill"><strong>Status</strong> Internal</div>
+        </div>
+      </div>
+
+      <div class="heroTitle">
+        <h1>Quality Engineering Through a Biblical Lens</h1>
+        <p class="subtitle">
+          Testing validates outcomes. Quality engineering transforms foundations, systems, and processes over time.
+          Here’s a framework that maps classic QA principles to scripture-driven insights about integrity, prevention, and refinement.
+        </p>
+      </div>
+
+      <div class="heroBar"></div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="grid">
+      <!-- Main column -->
+      <section class="card" id="message">
+        <div class="kicker"><span class="dot"></span> QUALITY INSIGHT</div>
+        <p class="lede">
+          A quality engineering lens reveals something deep:
+          the goal isn’t only to confirm behavior — it’s to strengthen the system that produces the behavior.
+        </p>
+
+        <div class="quote" id="outward-inward">
+          “Man looks at the outward appearance, but the Lord looks at the heart.” — <strong>1 Samuel 16:7</strong><br />
+          <span style="opacity:.9;">Testing checks outward behavior. QA targets inward integrity.</span>
+        </div>
+
+        <h2 id="surface"><svg class="q-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2l7 4v6c0 5-3.5 9.4-7 10-3.5-.6-7-5-7-10V6l7-4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 12.5l2.2 2.2L16.5 8.5"/></svg> 1) Testing vs QA: surface validation vs deep transformation</h2>
+        <h3>Software testing (surface)</h3>
+        <ul>
+          <li>Did it work?</li>
+          <li>Did it break?</li>
+          <li>Does it meet requirements?</li>
+        </ul>
+        <h3>Quality engineering (depth)</h3>
+        <ul>
+          <li>Is the foundation correct?</li>
+          <li>Is the system aligned with truth?</li>
+          <li>Is behavior sustainable under pressure?</li>
+        </ul>
+
+        <h2 id="foundation"><svg class="q-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2l7 4v6c0 5-3.5 9.4-7 10-3.5-.6-7-5-7-10V6l7-4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 12.5l2.2 2.2L16.5 8.5"/></svg> 2) QA starts at the foundation (shift-left)</h2>
+        <div class="quote">
+          “The wise man built his house on the rock…” — <strong>Matthew 7:24–27</strong>
+        </div>
+        <ul>
+          <li><strong>Rock</strong> = solid architecture, clear requirements, risk understood early</li>
+          <li><strong>Sand</strong> = ambiguity, weak contracts, untested assumptions</li>
+        </ul>
+        <div class="callout" id="truth-standard">
+          <p class="calloutTitle">Truth as the spec</p>
+          <p class="small">
+            “I am the way, the truth, and the life.” — <strong>John 14:6</strong><br />
+            Quality starts with clear acceptance criteria grounded in truth, not assumptions.
+          </p>
+        </div>
+
+        <h2 id="refinement"><svg class="q-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2l7 4v6c0 5-3.5 9.4-7 10-3.5-.6-7-5-7-10V6l7-4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 12.5l2.2 2.2L16.5 8.5"/></svg> 3) QA is continuous refinement (not a one-time phase)</h2>
+        <div class="quote">
+          “He will sit as a refiner and purifier of silver.” — <strong>Malachi 3:3</strong>
+        </div>
+        <ul>
+          <li>Regression + continuous improvement beats “one big test cycle”</li>
+          <li>Automation + quality gates protect velocity</li>
+          <li>Monitoring + feedback loops sustain reliability</li>
+        </ul>
+
+        <h2 id="whole-system"><svg class="q-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2l7 4v6c0 5-3.5 9.4-7 10-3.5-.6-7-5-7-10V6l7-4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 12.5l2.2 2.2L16.5 8.5"/></svg> 4) QA covers the whole system (not just one feature)</h2>
+        <div class="quote">
+          “Test yourselves to see if you are in the faith.” — <strong>2 Corinthians 13:5</strong>
+        </div>
+        <p class="small" style="margin-top:10px;">
+          QA asks for a full-system audit: inputs → processing → outputs.
+        </p>
+        <ul>
+          <li><strong>Inputs</strong>: assumptions, data, user intent</li>
+          <li><strong>Processing</strong>: business rules, edge cases, failure handling</li>
+          <li><strong>Outputs</strong>: user impact, reliability, trust</li>
+        </ul>
+
+        <h2 id="standards"><svg class="q-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2l7 4v6c0 5-3.5 9.4-7 10-3.5-.6-7-5-7-10V6l7-4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 12.5l2.2 2.2L16.5 8.5"/></svg> 5) QA defines standards (not only checks them)</h2>
+        <div class="quote">
+          “Be holy, because I am holy.” — <strong>1 Peter 1:16</strong>
+        </div>
+        <ul>
+          <li>Definition of Ready and Done</li>
+          <li>Release criteria and sign-off gates</li>
+          <li>Non-negotiables: security, accessibility, reliability</li>
+        </ul>
+
+        <h2 id="prevention"><svg class="q-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2l7 4v6c0 5-3.5 9.4-7 10-3.5-.6-7-5-7-10V6l7-4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 12.5l2.2 2.2L16.5 8.5"/></svg> 6) QA prevents failure (not just detects it)</h2>
+        <div class="quote">
+          “Sin is crouching at the door… you must rule over it.” — <strong>Genesis 4:7</strong>
+        </div>
+        <ul>
+          <li>Risk-based testing and early warning signals</li>
+          <li>Pre-production validation</li>
+          <li>Observability: logs, monitoring, alerting</li>
+        </ul>
+
+        <h2 id="transformation"><svg class="q-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2l7 4v6c0 5-3.5 9.4-7 10-3.5-.6-7-5-7-10V6l7-4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 12.5l2.2 2.2L16.5 8.5"/></svg> 7) QA is about transformation (system evolution)</h2>
+        <div class="quote">
+          “Be transformed by the renewing of your mind.” — <strong>Romans 12:2</strong>
+        </div>
+        <ul>
+          <li>Refactoring and tech-debt reduction</li>
+          <li>Root-cause analysis, not patchwork fixes</li>
+          <li>Retrospectives that produce actions</li>
+        </ul>
+
+        <div class="callout callout-accent" id="model">
+          <p class="calloutTitle">The Quality Engineering Model</p>
+          <p class="small">
+            TRUTH → DESIGN → BUILD → TEST → REFINE → GOVERN → MONITOR → TRANSFORM
+          </p>
+        </div>
+
+        <div class="callout" id="purpose">
+          <p class="calloutTitle">Purpose: quality serves people</p>
+          <p class="small">
+            “Let all that you do be done in love.” — <strong>1 Corinthians 16:14</strong><br />
+            Quality isn’t perfection — it’s impact: usability, accessibility, reliability, trust.
+          </p>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="card">
+        <h2>📌 In This Bulletin</h2>
+        <div class="toc">
+          <a href="#message"><span>Quality Insight</span><em>Why this lens matters</em></a>
+          <a href="#surface"><span>Testing vs QA</span><em>Surface vs depth</em></a>
+          <a href="#foundation"><span>Foundation (Shift-left)</span><em>Build on rock</em></a>
+          <a href="#refinement"><span>Refinement</span><em>Continuous quality</em></a>
+          <a href="#whole-system"><span>Whole system</span><em>Inputs → outputs</em></a>
+          <a href="#standards"><span>Standards</span><em>Governance</em></a>
+          <a href="#prevention"><span>Prevention</span><em>Risk &amp; alerts</em></a>
+          <a href="#transformation"><span>Transformation</span><em>System evolution</em></a>
+          <a href="#model"><span>Model</span><em>Operating flow</em></a>
+          <a href="#purpose"><span>Purpose</span><em>Quality serves people</em></a>
+        </div>
+
+        <div class="callout" style="margin-top:16px;">
+          <p class="calloutTitle"><svg class="q-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2l7 4v6c0 5-3.5 9.4-7 10-3.5-.6-7-5-7-10V6l7-4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 12.5l2.2 2.2L16.5 8.5"/></svg> Quality Standard</p>
+          <p class="small">
+            Quality engineering is shared ownership: build intentionally, release confidently, protect user trust together.
+          </p>
+        </div>
+
+        <div class="callout callout-accent" style="margin-top:16px;">
+          <p class="calloutTitle">✅ Action Checklist</p>
+          <ul style="margin-top:8px;">
+            <li>Acceptance criteria are truth-based and testable</li>
+            <li>Risks are visible before build starts</li>
+            <li>Quality gates exist in CI/CD</li>
+            <li>Monitoring + alerts are production-ready</li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>
+        <strong>Quality Bulletin</strong> · Built for alignment, velocity, and user trust.
+        <span style="opacity:.7;">&nbsp;|&nbsp;</span>
+        <span>Questions? Share in your team channel.</span>
+      </div>
+      <div class="stamp">Quality Stewards</div>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      var KEY = 'qafirstculture-theme';
+      var root = document.documentElement;
+      function getStored(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+      function setStored(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+      function apply(theme){
+        theme = theme === 'light' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        document.querySelectorAll('.theme-btn').forEach(function(btn){
+          btn.setAttribute('aria-pressed', btn.getAttribute('data-theme') === theme ? 'true' : 'false');
+        });
+        setStored(theme);
+      }
+      var initial = getStored() || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      apply(initial);
+      document.addEventListener('click', function(e){
+        var btn = e.target.closest('.theme-btn');
+        if (btn) apply(btn.getAttribute('data-theme'));
+      });
+    })();
+  </script>
+</body>
+</html>
+
